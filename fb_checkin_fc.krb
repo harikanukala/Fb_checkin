@@ -1,0 +1,44 @@
+prior
+    foreach
+	fb_checkin.prior($node, $value)
+    assert
+	fb_checkin.update_prior($node,0)
+
+inc_num_samples
+    foreach
+	fb_checkin.inc_num_samples($node, $value,$prob)
+    assert
+        fb_checkin.sample_size($node,$value)
+	fb_checkin.update_inc_num_samples($node,$value,0)
+
+inc_num_features
+    foreach
+	fb_checkin.inc_num_features($node, $value,$prob)
+    assert
+        fb_checkin.feature($node,$value)
+	fb_checkin.update_inc_num_features($node,$value,0)
+
+accuracy
+    foreach
+        fb_checkin.accuracy($new_value)
+    assert
+        fb_checkin.update_accuracy($new_value)
+
+sample_size
+    foreach
+	fb_checkin.sample_size($node, $value)
+    assert
+	fb_checkin.updated_sample_size($node,$value)
+
+feature
+    foreach
+        fb_checkin.feature($node,$value)
+    assert
+        fb_checkin.update_feature($node,$value)
+
+threshold
+    foreach
+        fb_checkin.threshold($value)
+    assert
+        fb_checkin.find_threshold($value)
+
